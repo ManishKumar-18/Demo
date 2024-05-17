@@ -71,6 +71,6 @@ jobs:
           echo "::notice title=HTML report url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
         env:
           AZCOPY_AUTO_LOGIN_TYPE: SPN
-          AZCOPY_SPA_APPLICATION_ID: '012db6e6-31b7-4f46-99e2-868161156e21'
-          AZCOPY_SPA_CLIENT_SECRET: 'ZlG8Q~XZubXOJUvibG-dM~E38vs3LvOQZn6itbqM'
-          AZCOPY_TENANT_ID: 'bb8f0008-738e-4cef-b770-61b620c6d04f'
+          AZCOPY_SPA_APPLICATION_ID: '${{ secrets.AZCOPY_SPA_APPLICATION_ID }}'
+          AZCOPY_SPA_CLIENT_SECRET: '${{ secrets.AZCOPY_SPA_CLIENT_SECRET }}'
+          AZCOPY_TENANT_ID: '${{ secrets.AZCOPY_TENANT_ID }}'
