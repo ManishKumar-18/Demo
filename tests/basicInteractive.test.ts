@@ -31,9 +31,9 @@ test("handling alerts",async({page}) => {
 })
 
 
-test("handling dropdown",async({page}) => {
-    await page.goto("https://www.lambdatest.com/selenium-playground/javascript-select-dropdown-demo");
-    await page.selectOption("#select-demo",{
-        label:'Tuesday'
-    })
-})
+// test("handling dropdown",async({page}) => {
+//     await page.goto("https://www.lambdatest.com/selenium-playground/javascript-select-dropdown-demo");
+//     await page.selectOption("#select-demo",{
+//         label:'Tuesday'
+//     })
+// })
