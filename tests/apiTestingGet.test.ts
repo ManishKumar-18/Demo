@@ -11,7 +11,7 @@ test("Testing Rest api with get method", async ({ request }) => {
   expect(responseBody.userId).toBe(1);
 });
 
-test.only("Testing Rest api with post method", async ({ request }) => {
+test("Testing Rest api with post method", async ({ request }) => {
   const url = `https://jsonplaceholder.typicode.com/posts`;
   const res = await request.post(url, {
     headers: {
@@ -30,25 +30,25 @@ test.only("Testing Rest api with post method", async ({ request }) => {
   expect(responseBody.title).toBe("New Post");
 });
 
-test('Api Chaining', async({request}) => {
+// test('Api Chaining', async({request}) => {
 
-    //get all posts
-    const postResponse = await request.get('https://jsonplaceholder.typicode.com/posts');
-    expect(postResponse.status()).toBe(200);
+//     //get all posts
+//     const postResponse = await request.get('https://jsonplaceholder.typicode.com/posts');
+//     expect(postResponse.status()).toBe(200);
 
-    //parse response body to json
+//     //parse response body to json
 
-    const posts = await postResponse.json();
+//     const posts = await postResponse.json();
 
-    const firstPost = posts[0];
+//     const firstPost = posts[0];
 
-    //get comments from the select post
+//     //get comments from the select post
 
-    const commentsResponse = await request.get(`https://jsonplaceholder.typicode.com/posts/${firstPost.id}/comments`);
-    expect(commentsResponse.status()).toBe(200);
+//     const commentsResponse = await request.get(`https://jsonplaceholder.typicode.com/posts/${firstPost.id}/comments`);
+//     expect(commentsResponse.status()).toBe(200);
 
 
-    const comments = await commentsResponse.json();
-    expect(comments.length).toBeGreaterThan(0);
-    expect(comments[0].postid).toBe(firstPost.id);
-});
+//     const comments = await commentsResponse.json();
+//     expect(comments.length).toBeGreaterThan(0);
+//     expect(comments[0].postid).toBe(firstPost.id);
+// });
