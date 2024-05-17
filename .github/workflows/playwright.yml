@@ -74,9 +74,10 @@ jobs:
         run: |
           REPORT_DIR='run-${{ github.run_id }}-${{ github.run_attempt }}'
           azcopy cp --recursive "./playwright-report/*" "https://caredgepoc.blob.core.windows.net/\$web/$REPORT_DIR"
-          echo "::set-output name=report-url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
+          echo "REPORT_URL=https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html" >> $GITHUB_ENV
       - name: Add HTML report URL to summary
         if: always()
         run: |
-          echo "Azure AD Report URL: ${{ steps.upload-azure.outputs.report-url }}"
+          echo "Azure AD Report URL: $REPORT_URL"
+
 
