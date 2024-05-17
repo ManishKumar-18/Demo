@@ -69,23 +69,14 @@ jobs:
           path: playwright-report
           retention-days: 14
       - name: Upload HTML report to Azure
+        id: upload-azure
         shell: bash
         run: |
           REPORT_DIR='run-${{ github.run_id }}-${{ github.run_attempt }}'
           azcopy cp --recursive "./playwright-report/*" "https://caredgepoc.blob.core.windows.net/\$web/$REPORT_DIR"
-          echo "::notice title=HTML report url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
+          echo "::set-output name=report-url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
       - name: Add HTML report URL to summary
         if: always()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const reportUrl = "${{ steps.upload-azure.outputs['report-url'] }}";
-            github.rest.checks.update({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            check_run_id: context.runId,
-            output: {
-              title: "HTML Report",
-              summary: `[View the HTML report](${reportUrl})`
-            }
-            });
+        run: |
+          echo "Azure AD Report URL: ${{ steps.upload-azure.outputs.report-url }}"
+
