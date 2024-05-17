@@ -1,7 +1,7 @@
 import test, { chromium } from "@playwright/test";
 
 test("Login test Demo", async () => {
-    const browser = await chromium.launch({headless:false});
+    const browser = await chromium.launch();
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://ecommerce-playground.lambdatest.io/");
