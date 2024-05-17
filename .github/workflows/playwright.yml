@@ -70,7 +70,7 @@ jobs:
           azcopy cp --recursive "./playwright-report/*" "https://caredgepoc.blob.core.windows.net/\$web/$REPORT_DIR"
           echo "::notice title=HTML report url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
         env:
-          AZCOPY_AUTO_LOGIN_TYPE: SPN
+          AZCOPY_AUTO_LOGIN_TYPE: '${{ secrets.AZCOPY_AUTO_LOGIN_TYPE}}'
           AZCOPY_SPA_APPLICATION_ID: '${{ secrets.AZCOPY_SPA_APPLICATION_ID }}'
           AZCOPY_SPA_CLIENT_SECRET: '${{ secrets.AZCOPY_SPA_CLIENT_SECRET }}'
           AZCOPY_TENANT_ID: '${{ secrets.AZCOPY_TENANT_ID }}'
