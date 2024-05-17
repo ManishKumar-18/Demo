@@ -74,3 +74,5 @@ jobs:
           REPORT_DIR='run-${{ github.run_id }}-${{ github.run_attempt }}'
           azcopy cp --recursive "./playwright-report/*" "https://caredgepoc.blob.core.windows.net/\$web/$REPORT_DIR"
           echo "::notice title=HTML report url::https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
+        with:
+          html_file: "https://caredgepoc.z13.web.core.windows.net//$REPORT_DIR/index.html"
